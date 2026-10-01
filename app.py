@@ -15,8 +15,8 @@ database and real customer records stay on a local machine.
 
 
 
-from desk.db import apply_migrations, get_db
-apply_migrations(get_db())
+import desk.db as db
+db.init_db()
 
 import streamlit as st
 
