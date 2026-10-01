@@ -15,8 +15,8 @@ database and real customer records stay on a local machine.
 
 
 
-from desk import cli
-cli.init_db()
+from desk.services import deployment
+deployment.ensure_demo_data(deployment.get_db(), deployment.config, deployment.get_clock())
 
 import streamlit as st
 
