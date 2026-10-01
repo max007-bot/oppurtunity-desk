@@ -119,11 +119,22 @@ def ensure_demo_data(db, config: Config, clock) -> str | None:
     database that already holds offers is left exactly as it is, so a redeploy
     never overwrites what somebody has entered. Returns a short note when it
     seeded, and nothing when it did not need to.
+
+    The migration step is the part that is easy to forget. The database file is
+    not in version control, so a fresh checkout has no schema at all - not an
+    empty one, none - and opening it fails before any screen renders. Locally
+    this never shows, because the file was created by the CLI long ago.
     """
     from ..config import Mode
+    from ..db import migrate
 
     if config.mode is not Mode.DEMO:
         return None
+
+    # Create the parent directory and apply every migration. This is idempotent:
+    # on an existing database it applies whatever is pending and nothing else.
+    config.db_path.parent.mkdir(parents=True, exist_ok=True)
+    migrate(config.db_path, mode=config.mode, clock=clock)
 
     with db.open() as conn:
         existing = conn.execute("SELECT COUNT(*) FROM offers").fetchone()[0]
