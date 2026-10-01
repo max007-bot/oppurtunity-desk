@@ -76,6 +76,27 @@ def test_the_public_flag_is_not_set_by_an_empty_string(demo_config):
     assert deployment.is_public_deployment({"DESK_PUBLIC": "true"}) is True
 
 
+def test_seeding_works_with_no_database_file_at_all(demo_config, clock):
+    """What a fresh deployment actually looks like.
+
+    ``data/`` is gitignored, so a host checks out the repository with no database
+    file — not an empty one, none. Seeding therefore has to migrate before it can
+    open anything. This never shows up locally, because the file has existed
+    since the first time anybody ran the CLI, which is exactly why it reached a
+    deploy before being caught.
+    """
+    from desk.db import Database
+
+    assert not demo_config.db_path.exists()
+    handle = Database(demo_config, clock)
+    note = deployment.ensure_demo_data(handle, demo_config, clock)
+
+    assert demo_config.db_path.exists()
+    assert note and "Sample stock loaded" in note
+    with handle.open() as conn:
+        assert conn.execute("SELECT COUNT(*) FROM offers").fetchone()[0] > 0
+
+
 def test_seeding_runs_once_and_never_overwrites(db, demo_config, clock, importer, source):
     """A redeploy must not wipe what is already there."""
     first = deployment.ensure_demo_data(db, demo_config, clock)

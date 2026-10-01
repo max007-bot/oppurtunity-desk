@@ -51,7 +51,7 @@ zone or the freshness thresholds; the defaults need no configuration.
 .\.venv\Scripts\python.exe -m pytest
 ```
 
-451 tests, all passing. They cover the acceptance cases in manual section 11: the mandatory
+452 tests, all passing. They cover the acceptance cases in manual section 11: the mandatory
 arithmetic (€8,500 and −€1,500), false-match rejection, VAT incompatibility, insufficient
 comparables, idempotent replay, draft invalidation, suppression, the SSRF guard and demo/live
 separation. See `docs/ACCEPTANCE.md` for the case-by-case mapping.
@@ -170,7 +170,7 @@ desk/
   ui/                   The six screens
   cli.py                Command line
 fixtures/               Synthetic demo data and saved provider responses
-tests/                  451 tests, including the acceptance invariants
+tests/                  452 tests, including the acceptance invariants
 docs/                   Manual, playbook, status, source access, data dictionary, acceptance
 data/ exports/          Local, git-ignored
 ```

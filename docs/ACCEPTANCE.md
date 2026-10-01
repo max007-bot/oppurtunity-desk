@@ -6,7 +6,7 @@ Every case from manual section 11, mapped to the test that pins it. Run them wit
 .\.venv\Scripts\python.exe -m pytest
 ```
 
-Result at the time of writing: **451 passed**.
+Result at the time of writing: **452 passed**.
 
 ## The acceptance table
 
@@ -242,7 +242,7 @@ claim to.
 | Criterion | State |
 |---|---|
 | The offline demo works from a clean setup | Yes, from the commands in the README |
-| Critical tests pass | Yes, 451 |
+| Critical tests pass | Yes, 452 |
 | Every displayed fact has a provenance route | Yes, via `evidence`, `observations` and `confirmed_by` |
 | Calculations are reproducible | Yes, verified across five independent fresh seeds |
 | False matches are rejected | Yes, with the reason shown |
