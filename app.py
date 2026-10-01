@@ -1,7 +1,7 @@
-from desk import cli
-cli.init_db()
-"""Opportunity Desk - cars worth a second look, and the buyers who asked for them.
+from __future__ import annotations
 
+"""Opportunity Desk - cars worth a second look, and the buyers who asked for them.
+...
 Run it locally with:
 
     .\\.venv\\Scripts\\python.exe -m streamlit run app.py --server.address 127.0.0.1
@@ -13,7 +13,10 @@ real data. There is still no authentication and no access control, so a live
 database and real customer records stay on a local machine.
 """
 
-from __future__ import annotations
+
+
+from desk import cli
+cli.init_db()
 
 import streamlit as st
 
