@@ -1,0 +1,36 @@
+# Theme for the Opportunity Desk.
+#
+# Monochrome on near-black with a single restrained accent, chosen to sit beside
+# the premium-dealer visual register rather than Streamlit's default grey. The
+# accent is used for one thing only — the figure or control that matters on a
+# given card — so that when something is highlighted it means something.
+
+[theme]
+base = "dark"
+primaryColor = "#C8A46A"          # restrained brass; the single accent
+backgroundColor = "#0C0E10"       # near-black ground
+secondaryBackgroundColor = "#15181B"  # cards, sidebar, expanders
+textColor = "#EAE7E1"             # warm off-white
+font = "sans serif"
+
+[server]
+# Hosting platforms provide the port and address themselves. Nothing here opens
+# a listener on its own.
+headless = true
+# Both of these stay on. Turning CORS off is a common copy-paste in Streamlit
+# deployment snippets and it is wrong here: it sends
+# 'Access-Control-Allow-Origin: *' and lets any origin open a WebSocket to the
+# app. For something that is meant to be reachable from the internet that is the
+# opposite of what is wanted, and XSRF protection does not cover it.
+enableCORS = true
+enableXsrfProtection = true
+# Nothing on the hosted copy accepts a large upload; imports are a local task.
+maxUploadSize = 5
+
+[browser]
+gatherUsageStats = false
+
+[client]
+# A stack trace in front of a dealer is not useful, and it can leak paths.
+showErrorDetails = false
+toolbarMode = "minimal"

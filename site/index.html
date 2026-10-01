@@ -1,0 +1,855 @@
+<title>Luxury Car Opportunity Desk</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* ------------------------------------------------------------------
+     A monochrome, photographic-dealer register: pure black and white
+     bands, an extended grotesque set in caps, square corners, and no
+     decorative accent hue. Colour appears only inside the machine-output
+     blocks, where pass and fail have to be told apart at a glance.
+     ------------------------------------------------------------------ */
+
+  :root {
+    color-scheme: dark;
+
+    --black:     #000000;
+    --near:      #121212;
+    --raise:     #1C1C1C;
+    --hair:      #2A2A2A;
+    --white:     #FFFFFF;
+    --grey:      #D0D0D0;
+    --grey-mid:  #8E8E8E;
+    --grey-dim:  #6A6A6A;
+
+    --paper:     #FFFFFF;
+    --paper-2:   #F1F1F1;
+    --paper-line:#D9D9D9;
+    --ink:       #000000;
+    --ink-soft:  #4A4A4A;
+
+    --pass:      #6F9A74;
+    --fail:      #B4756A;
+
+    --grotesk: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono:    "IBM Plex Mono", "SF Mono", Consolas, monospace;
+
+    --measure: 36rem;
+    --gutter: 20px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--black);
+    color: var(--grey);
+    font-family: var(--grotesk);
+    font-variation-settings: "wdth" 100;
+    font-size: 1.0125rem;
+    line-height: 1.66;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* ------------------------------------------------------- utility bar */
+
+  .utility {
+    background: var(--black);
+    border-bottom: 1px solid var(--hair);
+  }
+  .utility .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.2rem;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey-dim);
+  }
+
+  /* ---------------------------------------------------------- masthead */
+
+  .masthead {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: var(--black);
+    border-bottom: 1px solid var(--hair);
+  }
+  .masthead .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.9rem;
+  }
+  .mark {
+    font-family: var(--grotesk);
+    font-variation-settings: "wdth" 125;
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1;
+  }
+  .mark small {
+    display: block;
+    font-variation-settings: "wdth" 100;
+    font-weight: 500;
+    font-size: 0.55rem;
+    letter-spacing: 0.42em;
+    color: var(--grey-dim);
+    margin-top: 0.28rem;
+  }
+  .flag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--white);
+    padding: 0.36rem 0.6rem;
+    white-space: nowrap;
+  }
+
+  /* ------------------------------------------------------------- bands */
+
+  .band { padding-block: clamp(3rem, 8vw, 5.5rem); }
+  .band--dark  { background: var(--black); color: var(--grey); }
+  .band--near  { background: var(--near);  color: var(--grey); }
+  .band--light { background: var(--paper); color: var(--ink-soft); }
+
+  .band--light h2, .band--light h3, .band--light strong { color: var(--ink); }
+  .band--light .eyebrow { color: var(--ink); }
+  .band--dark h2, .band--near h2,
+  .band--dark h3, .band--near h3,
+  .band--dark strong, .band--near strong { color: var(--white); }
+
+  /* -------------------------------------------------------------- type */
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin: 0 0 1.5rem;
+  }
+
+  h1 {
+    font-variation-settings: "wdth" 125;
+    font-weight: 800;
+    font-size: clamp(2.15rem, 8vw, 4.6rem);
+    line-height: 0.98;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin: 0 0 1.8rem;
+    text-wrap: balance;
+  }
+  h1 span { color: var(--grey-mid); }
+
+  h2 {
+    font-variation-settings: "wdth" 125;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 4.6vw, 2.5rem);
+    line-height: 1.06;
+    text-transform: uppercase;
+    margin: 0 0 1.5rem;
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-variation-settings: "wdth" 112;
+    font-weight: 700;
+    font-size: 0.97rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin: 0 0 0.5rem;
+  }
+
+  p { max-width: var(--measure); margin: 0 0 1.15rem; }
+  p:last-child { margin-bottom: 0; }
+  .lede { font-size: clamp(1.08rem, 2.6vw, 1.3rem); line-height: 1.5; font-weight: 500; }
+  .band--dark .lede, .band--near .lede { color: var(--white); }
+  .band--light .lede { color: var(--ink); }
+
+  .standfirst {
+    font-size: clamp(1.05rem, 2.8vw, 1.3rem);
+    line-height: 1.52;
+    color: var(--grey);
+    max-width: 40rem;
+    margin: 0 0 2.5rem;
+  }
+
+  strong { font-weight: 700; }
+  em.q { font-style: normal; font-weight: 500; color: var(--white); }
+  .band--light em.q { color: var(--ink); }
+
+  /* -------------------------------------------------------------- hero */
+
+  .hero {
+    position: relative;
+    background: var(--black);
+    padding-block: clamp(3.5rem, 11vw, 7rem) clamp(3rem, 7vw, 4.5rem);
+    overflow: hidden;
+  }
+  /* A single sweep of light across bodywork, drawn rather than photographed. */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: -30% -10% auto -10%;
+    height: 150%;
+    background:
+      linear-gradient(104deg, transparent 38%, rgba(255,255,255,0.055) 47%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.03) 53%, transparent 62%),
+      radial-gradient(70% 55% at 18% 0%, rgba(255,255,255,0.05), transparent 70%);
+    pointer-events: none;
+  }
+  .hero .wrap { position: relative; }
+
+  /* ------------------------------------------------------------- stats */
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    border-top: 1px solid var(--hair);
+    margin-top: 0.5rem;
+  }
+  .stat {
+    padding: 1.6rem 1.2rem 1.5rem 0;
+    border-bottom: 1px solid var(--hair);
+  }
+  .stat b {
+    display: block;
+    font-variation-settings: "wdth" 125;
+    font-weight: 800;
+    font-size: clamp(2.4rem, 7vw, 3.4rem);
+    line-height: 0.92;
+    color: var(--white);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 0.6rem;
+  }
+  .stat span {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey-dim);
+    display: block;
+    max-width: 12rem;
+  }
+
+  /* ------------------------------------------------------- output slab */
+
+  figure.output {
+    margin: 2rem 0;
+    border: 1px solid var(--hair);
+    background: var(--near);
+    max-width: 46rem;
+  }
+  .band--light figure.output { border-color: var(--black); background: var(--black); }
+
+  figure.output figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.8rem;
+    padding: 0.55rem 0.9rem;
+    border-bottom: 1px solid var(--hair);
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--grey-dim);
+  }
+  figure.output figcaption .tag {
+    color: var(--black);
+    background: var(--white);
+    padding: 0.2rem 0.5rem;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+  figure.output figcaption .tag.demo { background: var(--grey-dim); color: var(--black); }
+
+  figure.output pre {
+    margin: 0;
+    padding: 1rem 0.9rem;
+    overflow-x: auto;
+    font-family: var(--mono);
+    font-size: 0.775rem;
+    line-height: 1.6;
+    color: var(--grey);
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  pre .k  { color: var(--grey-dim); }
+  pre .ok { color: var(--pass); }
+  pre .no { color: var(--fail); }
+  pre .hi { color: var(--white); font-weight: 500; }
+
+  /* ----------------------------------------------------------- pillars */
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--hair);
+  }
+  .band--light .pillars { border-top-color: var(--paper-line); }
+  .pillar {
+    padding: 1.5rem 1.6rem 1.6rem 0;
+    border-bottom: 1px solid var(--hair);
+  }
+  .band--light .pillar { border-bottom-color: var(--paper-line); }
+  .pillar p { font-size: 0.95rem; margin: 0; max-width: 24rem; }
+
+  /* ------------------------------------------------------------ ledger */
+
+  ol.ledger { list-style: none; counter-reset: d; margin: 2.5rem 0 0; padding: 0; }
+  ol.ledger > li {
+    counter-increment: d;
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 0.4rem 1rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--hair);
+  }
+  .band--light ol.ledger > li { border-top-color: var(--paper-line); }
+  ol.ledger > li::before {
+    content: counter(d, decimal-leading-zero);
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--grey-dim);
+    padding-top: 0.3rem;
+  }
+  ol.ledger p { font-size: 0.95rem; margin: 0; max-width: 32rem; }
+
+  /* ----------------------------------------------------------- callout */
+
+  .callout {
+    border: 1px solid var(--white);
+    padding: 1.4rem 1.5rem;
+    margin: 2.5rem 0 0;
+    max-width: 40rem;
+  }
+  .band--light .callout { border-color: var(--black); }
+  .callout p:first-child { font-weight: 700; }
+  .band--dark .callout p:first-child, .band--near .callout p:first-child { color: var(--white); }
+  .band--light .callout p:first-child { color: var(--ink); }
+
+  .slab {
+    background: var(--white);
+    color: var(--black);
+    padding: 1.5rem 1.6rem;
+    margin: 2.5rem 0 0;
+    max-width: 40rem;
+  }
+  .slab p { color: var(--black); font-weight: 500; }
+
+  /* ------------------------------------------------------------- table */
+
+  .scroller { overflow-x: auto; margin: 2.5rem 0 0; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 34rem;
+    font-size: 0.9rem;
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.85rem 1rem 0.85rem 0;
+    border-bottom: 1px solid var(--paper-line);
+  }
+  th {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    border-bottom: 1px solid var(--ink);
+  }
+  td:first-child { color: var(--ink); font-weight: 500; padding-right: 1.6rem; }
+  td.verdict {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--ink);
+  }
+  td.verdict b {
+    display: inline-block;
+    padding: 0.22rem 0.45rem;
+    font-weight: 500;
+  }
+  td.verdict.no   b { background: var(--ink); color: var(--paper); }
+  td.verdict.part b { background: var(--paper-2); color: var(--ink); border: 1px solid var(--paper-line); }
+  td.verdict.yes  b { border: 1px solid var(--ink); }
+
+  /* ---------------------------------------------------------- refusals */
+
+  ul.plain { list-style: none; margin: 2.5rem 0 0; padding: 0; }
+  ul.plain li {
+    padding: 1rem 0;
+    border-top: 1px solid var(--hair);
+    font-size: 0.95rem;
+    max-width: 38rem;
+    display: grid;
+    grid-template-columns: 1.6rem 1fr;
+    gap: 0.9rem;
+  }
+  .band--light ul.plain li { border-top-color: var(--paper-line); }
+  ul.plain li::before {
+    content: "—";
+    color: var(--grey-dim);
+  }
+  ul.plain li b { color: var(--white); font-weight: 700; }
+  .band--light ul.plain li b { color: var(--ink); }
+
+  /* ------------------------------------------------------------ footer */
+
+  footer { background: var(--black); border-top: 1px solid var(--hair); padding-block: 3rem 4rem; }
+  footer .sig {
+    font-variation-settings: "wdth" 125;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+    max-width: 40rem;
+  }
+  footer p.small {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    line-height: 1.8;
+    color: var(--grey-dim);
+    max-width: 38rem;
+  }
+
+  @media (max-width: 30rem) {
+    .flag { display: none; }
+    figure.output pre { font-size: 0.71rem; }
+    ol.ledger > li { grid-template-columns: 2.2rem 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<div class="utility">
+  <div class="wrap">
+    <span>Working prototype &middot; runs locally</span>
+    <span>Synthetic data throughout</span>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="mark">Opportunity Desk<small>Cross-border vehicle trading</small></div>
+    <div class="flag">Not a live system</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================================================ HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <h1>The version that tells you <span>when it doesn't know</span></h1>
+      <p class="standfirst">
+        A working desk that connects the cars you can buy to the people who have actually said
+        they want one, prices the gap against genuinely comparable cars, and refuses to produce a
+        figure when something it needs is missing.
+      </p>
+      <div class="stats">
+        <div class="stat"><b>418</b><span>Tests passing</span></div>
+        <div class="stat"><b>7</b><span>Screens, all working</span></div>
+        <div class="stat"><b>0</b><span>Live requests ever made</span></div>
+        <div class="stat"><b>0</b><span>Ways to send a message</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= PROBLEM -->
+  <section class="band band--light">
+    <div class="wrap">
+      <p class="eyebrow">01 &nbsp;/&nbsp; The problem</p>
+      <h2>It is not a shortage of listings</h2>
+      <p class="lede">Anyone can see the cars. What nobody can hold in their head at once is the
+        rest of it.</p>
+      <p>
+        Which car is still genuinely available, rather than still advertised. Which buyer said
+        what, when, and whether they meant it. Whether a price is high or low against cars that
+        are actually similar, rather than cars wearing the same badge. And whether the deal
+        survives transport, VAT, registration tax and the money tied up while it happened.
+      </p>
+      <p>
+        Every one of those is knowable. They just live in four different places, and the answer
+        goes stale at four different speeds.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================================================== FOUR THINGS -->
+  <section class="band band--dark">
+    <div class="wrap">
+      <p class="eyebrow">02 &nbsp;/&nbsp; The shape of it</p>
+      <h2>Four things, and one rule</h2>
+
+      <div class="pillars">
+        <div class="pillar">
+          <h3>Observations</h3>
+          <p>A car is a stream of sightings, not a row. Seen at this price, on this date, by this
+            source. Nothing is ever overwritten, so you can always answer when it was last
+            actually confirmed.</p>
+        </div>
+        <div class="pillar">
+          <h3>Reviewed facts</h3>
+          <p>What a person has checked: the VIN, the mileage, the homologated seat count. When a
+            source disagrees with a reviewed fact, the contradiction is shown and a human
+            resolves it.</p>
+        </div>
+        <div class="pillar">
+          <h3>Requirements</h3>
+          <p>What a named person at a named business said they wanted, on a date, and who
+            confirmed it. Hard requirements are rejections, not deductions: four seats when five
+            are required is a no.</p>
+        </div>
+        <div class="pillar">
+          <h3>Money</h3>
+          <p>Comparable prices held apart by evidence type, costs entered as facts or left
+            unknown, and a scenario that states what the deal contributes once everything is
+            counted.</p>
+        </div>
+      </div>
+
+      <div class="slab">
+        <p>The rule: unknown is a real value, and it fails closed.</p>
+        <p>An unknown never becomes a zero, an average, or a convenient assumption. It blocks the
+          thing that depends on it and names itself while doing so.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== OUTPUT -->
+  <section class="band band--near">
+    <div class="wrap">
+      <p class="eyebrow">03 &nbsp;/&nbsp; On the screen</p>
+      <h2>What it actually puts in front of you</h2>
+      <p>
+        Everything below is verbatim output from the running application. The data is synthetic —
+        that is the point of a demo — but the reasoning is the real thing.
+      </p>
+
+      <figure class="output">
+        <figcaption><span class="tag">Matches</span> every rule, stated</figcaption>
+<pre><span class="ok">PASS</span>  model family: both are mercedes_g63
+<span class="ok">PASS</span>  steering side: both are lhd
+<span class="ok">PASS</span>  homologated seats: the car has 5 seats
+<span class="ok">PASS</span>  maximum mileage: 11,500 km is within 25,000 km
+<span class="ok">PASS</span>  registration age: first registered 2026-05-31,
+      within 24 months
+<span class="ok">PASS</span>  required option rear_entertainment: recorded as True
+<span class="ok">PASS</span>  stock requirement: recorded as physical stock
+<span class="ok">PASS</span>  delivery date: available 2026-09-27, before 2026-10-19
+<span class="ok">PASS</span>  price and VAT basis: both net under the standard regime
+<span class="ok">PASS</span>  budget headroom: asking €193,000.00 is within the
+      stated budget €215,000.00 <span class="k">(a budget is not a commitment)</span>
+
+<span class="k">A specification fit means every mandatory fact matches.
+It is not evidence that the buyer will buy, or that the
+economics work.</span></pre>
+      </figure>
+
+      <p>
+        Then the part most tools hide. Nineteen cars carried the same badge. Six became the
+        comparable set. Each of the other thirteen says why not, in its own words:
+      </p>
+
+      <figure class="output">
+        <figcaption><span class="tag">Comparables</span> 6 included &middot; 13 excluded</figcaption>
+<pre><span class="no">OUT</span>  CMP-011 — price evidence type is dealer_bid; supply
+     quotes, dealer-to-dealer bids, retail asking prices
+     and completed transactions are not blended into one
+     market price
+
+<span class="no">OUT</span>  CMP-009 — same vehicle identity as an offer carrying the
+     newer observation; counted once so it is not treated
+     as independent inventory
+
+<span class="no">OUT</span>  CMP-006 — tax basis is not comparable: price basis
+     differs (net versus gross) and is not converted
+
+<span class="no">OUT</span>  CMP-007 — mileage differs by 83,500 km, beyond the
+     selected 20,000 km tolerance
+
+<span class="no">OUT</span>  CMP-010 — different steering side (rhd versus lhd)
+
+<span class="no">OUT</span>  CMP-008 — observed 2026-08-19, older than the 14-day
+     freshness window</pre>
+      </figure>
+
+      <p>
+        What survives is a median of <strong>€233,500</strong> from six distinct vehicles, ranging
+        €228,000 to €243,000. Against an asking price of €193,000 that is a gap of €40,500 — and
+        the tool immediately says what the gap is not:
+      </p>
+
+      <figure class="output">
+        <figcaption><span class="tag">Signal</span> the caveat is part of the number</figcaption>
+<pre>Observed asking-price gap: <span class="hi">€40,500.00</span>
+compatible comparable asking median €233,500.00
+minus observed supply asking €193,000.00
+
+<span class="k">This is an investigation signal, not profit: it excludes
+every cost and assumes a sale that has not happened.</span></pre>
+      </figure>
+
+      <p>
+        Fill in the costs and you get an answer. Leave one box empty and you get the other
+        answer, which is the one that matters:
+      </p>
+
+      <figure class="output">
+        <figcaption><span class="tag">Scenario</span> both outcomes</figcaption>
+<pre>Costs complete      →  <span class="ok">Contribution €8,500.00</span>
+                       <span class="k">retail falls 5%  →  −€1,500.00</span>
+
+Registration tax
+left unknown        →  <span class="no">Incomplete</span>
+                       <span class="k">registration tax is unknown, so the
+                       scenario cannot be completed</span></pre>
+      </figure>
+
+      <p>
+        The seeded cost template proves this against the tool itself: its registration-tax line is
+        deliberately unpriced, so loading it produces a worksheet that correctly refuses to finish.
+      </p>
+
+      <figure class="output">
+        <figcaption><span class="tag demo">Demo data</span> call preparation</figcaption>
+<pre>Reason for relevance: confirmed requirement for a
+  Mercedes-AMG G 63 recorded on 2026-09-26, confirmed by
+  the buyer's purchasing manager
+
+Supply status: <span class="no">availability is stale</span> (last confirmed
+  2026-09-28 10:08 UTC); do not describe this car as
+  currently available
+
+Cross-border basis: <span class="ok">meets the EU new-means-of-transport
+  test</span> (first use 2026-05-31 is within six months of
+  2026-09-30; either limb is sufficient)
+
+Missing facts:
+  <span class="k">- a current availability confirmation from the seller
+  - contact verification within the freshness window</span>
+
+<span class="hi">There is no Send button and no Auto-dial.
+A person makes the call.</span></pre>
+      </figure>
+
+      <p>
+        Missing facts are listed rather than filled in. Nothing in the codebase can send an email,
+        post a message or dial a number, and it holds no credentials that would let it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================================================= DECISIONS -->
+  <section class="band band--light">
+    <div class="wrap">
+      <p class="eyebrow">04 &nbsp;/&nbsp; Design decisions</p>
+      <h2>Seven choices that are the actual work</h2>
+
+      <ol class="ledger">
+        <li><div>
+          <h3>Unknown blocks; it never becomes zero</h3>
+          <p>The commonest way a tool like this lies to you is by treating a missing cost as no
+            cost. Here it returns <em class="q">Incomplete</em> and names the fact it is waiting
+            for.</p>
+        </div></li>
+        <li><div>
+          <h3>Money is never a floating-point number</h3>
+          <p>Integer minor units and an ISO currency, exact decimal arithmetic throughout. And
+            <em class="q">119.000</em> means a hundred and nineteen thousand in Prague and a
+            hundred and nineteen in London, so a price without a locale is refused rather than
+            guessed.</p>
+        </div></li>
+        <li><div>
+          <h3>Five kinds of price are never blended</h3>
+          <p>A supply asking price, a retail asking price, a dealer-to-dealer bid, a stated budget
+            and a completed transaction describe five different things. Averaging them produces a
+            number that describes no market at all.</p>
+        </div></li>
+        <li><div>
+          <h3>Absence is not a sale</h3>
+          <p>A failed check is recorded as a failed check. The last successful observation
+            survives untouched, and the brief says the car may not be described as available. The
+            embarrassing call is the one where you promise a car that went last week.</p>
+        </div></li>
+        <li><div>
+          <h3>Permission is a recorded human decision</h3>
+          <p>A discovered phone number is not consent. A contact policy names a person, a channel,
+            a purpose and a date, and it expires. A suppression outranks every score in the
+            system.</p>
+        </div></li>
+        <li><div>
+          <h3>Freshness has a clock, and the clock is injectable</h3>
+          <p>Supply confirmations go stale in 24 hours, comparables in 14 days, requirements in
+            30, contact details in 90. Nothing calls the system clock directly, which is why every
+            stale badge is reproducible rather than dependent on when you looked.</p>
+        </div></li>
+        <li><div>
+          <h3>Demo and live are different databases</h3>
+          <p>Separate files, each stamped with its mode, every row flagged, and a guard that
+            refuses to open one as the other. Demo data cannot leak into a real decision by
+            accident.</p>
+        </div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ====================================================== CONNECTION -->
+  <section class="band band--dark">
+    <div class="wrap">
+      <p class="eyebrow">05 &nbsp;/&nbsp; Sources</p>
+      <h2>What it is not connected to</h2>
+      <p class="lede">Nothing. No live request has ever been made from this project.</p>
+      <p>
+        The marketplaces sit in a source register as <em class="q">blocked</em> — recorded,
+        described, with no adapter behind them. Three other sources are implemented and tested
+        offline, and all three are <em class="q">review required</em>, so the fetch path refuses
+        to run them.
+      </p>
+      <p>
+        The machinery for an authorised fetch is built and tested in full: it asks the policy
+        first, opens a run record so a failure is accounted for rather than invisible, writes
+        field-level evidence against every row it creates, and refuses outright if the approval
+        has lapsed. What is missing is a signature, not code.
+      </p>
+
+      <div class="callout">
+        <p>Not because the scraper would be hard.</p>
+        <p>Because the first question anyone sensible asks a supplier is whether they had
+          permission, and the answer should be ready before the question.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================== AUDIT -->
+  <section class="band band--light">
+    <div class="wrap">
+      <p class="eyebrow">06 &nbsp;/&nbsp; Contact with reality</p>
+      <h2>Four hours with real adverts</h2>
+      <p>
+        Thirty-eight public adverts from one exporter were read as research — not imported as
+        stock, which would have made the demo look better and proved nothing. They changed three
+        things.
+      </p>
+
+      <div class="scroller">
+        <table>
+          <thead>
+            <tr><th>What the adverts showed</th><th>Verdict</th><th>What changed</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>33 of 38 cars are new, at 0–30&nbsp;km</td>
+              <td class="verdict part"><b>Reframed</b></td>
+              <td>Not a used-car trader but a nearly-new export business, so the EU new-means-of-transport test is the mechanism of the trade, not a footnote. It is now a headline line on the vehicle record and on every call brief.</td>
+            </tr>
+            <tr>
+              <td>Listings are titled “S 450” and “S 580”, never “S-Class”</td>
+              <td class="verdict no"><b>Defect</b></td>
+              <td>The matcher looked for the family name, so the largest cluster in the stock resolved to nothing. The tests missed it because the fixtures were built around the internal key, which does contain “s class”. The tests were checking a naming convention, not the world.</td>
+            </tr>
+            <tr>
+              <td>Seven S-Class cars span €131,000 to €192,000</td>
+              <td class="verdict no"><b>Defect</b></td>
+              <td>An S 450 and an S 580 share a generation, so both entered one comparable set. A median across that range describes no car anyone can buy. Variants are now held apart by model designation, so a suffix somebody did or did not type changes nothing.</td>
+            </tr>
+            <tr>
+              <td>13% of stock is a build slot, not a car</td>
+              <td class="verdict part"><b>Surfaced</b></td>
+              <td>It was a badge among badges, which is easy to read past. The match screen now says it in a sentence, beside the date the buyer said they needed a car by.</td>
+            </tr>
+            <tr>
+              <td>GLE, GLC and GLS are a bigger cluster than the G 63</td>
+              <td class="verdict yes"><b>Added</b></td>
+              <td>Model coverage of the observed stock moves from 61% to 82%. The long tail — one Rolls-Royce, one Ferrari, one ALPINA — still goes to review rather than being guessed at.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <p>Four hours of contact with real adverts found defects that the specification, the test
+          suite and the demo had all missed.</p>
+        <p>That is the argument for a pilot. It is also the argument against trusting any tool
+          that has never met the data it claims to understand.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== REFUSALS -->
+  <section class="band band--dark">
+    <div class="wrap">
+      <p class="eyebrow">07 &nbsp;/&nbsp; Limits</p>
+      <h2>What it deliberately will not do</h2>
+      <ul class="plain">
+        <li><span><b>No live market coverage.</b> It analyses imported observations and replayed snapshots, and it says so on every screen.</span></li>
+        <li><span><b>No outreach.</b> No send, no dialler, no scheduler, no message credentials anywhere in the codebase.</span></li>
+        <li><span><b>No tax computation.</b> It records reviewed assumptions with a source and a date. It does not calculate anyone's liability and does not pretend to.</span></li>
+        <li><span><b>No profit claim.</b> It shows a conditional contribution and everything that contribution depends on.</span></li>
+        <li><span><b>No runtime model.</b> Every figure on screen comes from a rule you can read. A confident-looking number with no traceable basis would be the opposite of the point.</span></li>
+        <li><span><b>No multi-user.</b> One person, one machine, bound to localhost. Making it more than that is a rebuild, not a login screen, and the reasons are written down.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ NEXT -->
+  <section class="band band--near">
+    <div class="wrap">
+      <p class="eyebrow">08 &nbsp;/&nbsp; Next</p>
+      <h2>What would make it real</h2>
+      <p>In order of value. The first is worth more than the rest combined.</p>
+      <ol class="ledger">
+        <li><div><h3>An authorised stock export</h3><p>Any format. It turns replayed snapshots into genuine supply monitoring.</p></div></li>
+        <li><div><h3>Five to ten real buyer requirements</h3><p>The matching engine is the strongest part of the system and it is currently being fed entirely synthetic demand.</p></div></li>
+        <li><div><h3>Registration tax for one destination country</h3><p>With a source and a date. That is what turns <em class="q">Incomplete</em> into a complete scenario.</p></div></li>
+        <li><div><h3>A decision on contact routes</h3><p>For one market, so the outreach gates have a real policy to enforce rather than a placeholder.</p></div></li>
+        <li><div><h3>Approval for one bounded live read</h3><p>The path is built, tested offline, and refuses to run until somebody records a review against the source.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="sig">Luxury Car Opportunity Desk — an independent working prototype by Max Watkinson</p>
+    <p class="small">
+      Every company, contact, price and requirement shown on this page is synthetic demo data.
+      Nothing here is a real prospect, a real price, or evidence of any car's availability. The
+      prototype runs locally on one machine, holds no live connection to any marketplace or data
+      provider, and has never made a network request. Not affiliated with, endorsed by, or
+      published on behalf of any dealership or vehicle marketplace.
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,26 @@
+{
+  "_comment": "Synthetic approximation of an API Recherche d'entreprises search response.",
+  "results": [
+    {
+      "siren": "900000001",
+      "nom_complet": "DEMO PRESTIGE RENTAL A",
+      "nom_raison_sociale": "DEMO PRESTIGE RENTAL A SAS",
+      "activite_principale": "77.11Z",
+      "statut_diffusion": "O",
+      "siege": {
+        "adresse": "1 RUE EXAMPLE 06000 NICE",
+        "libelle_commune": "NICE"
+      }
+    },
+    {
+      "siren": "900000002",
+      "nom_complet": "DEMO RESTRICTED RECORD",
+      "activite_principale": "45.11Z",
+      "statut_diffusion": "P",
+      "siege": { "adresse": "REDACTED", "libelle_commune": "REDACTED" }
+    }
+  ],
+  "page": 1,
+  "total_pages": 2,
+  "total_results": 3
+}

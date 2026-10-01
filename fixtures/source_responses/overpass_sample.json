@@ -1,0 +1,63 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API (synthetic sample, not captured traffic)",
+  "osm3s": {
+    "timestamp_osm_base": "2026-09-26T18:00:00Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 900000001,
+      "lat": 50.0875,
+      "lon": 14.4213,
+      "tags": {
+        "shop": "car",
+        "name": "Demo Prestige Dealer A",
+        "addr:street": "Example Street",
+        "addr:housenumber": "1",
+        "addr:postcode": "11000",
+        "addr:city": "Praha",
+        "addr:country": "CZ",
+        "website": "https://demo-dealer-a.example",
+        "phone": "+999 100 0001"
+      }
+    },
+    {
+      "type": "way",
+      "id": 900000002,
+      "center": { "lat": 50.0912, "lon": 14.4005 },
+      "tags": {
+        "amenity": "car_rental",
+        "name": "Demo Prestige Rental Praha",
+        "addr:city": "Praha",
+        "addr:country": "CZ",
+        "contact:website": "https://demo-rental-praha.example"
+      }
+    },
+    {
+      "type": "node",
+      "id": 900000003,
+      "lat": 50.0801,
+      "lon": 14.4377,
+      "tags": {
+        "shop": "car",
+        "second_hand": "only",
+        "addr:city": "Praha"
+      }
+    },
+    {
+      "type": "node",
+      "id": 900000004,
+      "lat": 50.0765,
+      "lon": 14.4501,
+      "tags": {
+        "shop": "car",
+        "name": "Demo Volume Brand Dealer",
+        "brand": "Demo Volume Brand",
+        "addr:city": "Praha",
+        "addr:country": "CZ"
+      }
+    }
+  ]
+}

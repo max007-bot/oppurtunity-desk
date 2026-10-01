@@ -1,0 +1,21 @@
+# Runtime dependencies for a hosted deployment.
+#
+# This is the file a hosting platform installs. It is deliberately the runtime
+# set only - pytest, pytest-cov and ruff are development tools and are not
+# installed on the server. The full tested set, including those, is in
+# requirements.lock.txt.
+#
+# Versions are pinned exactly, to the ones the test suite actually ran against
+# on Python 3.12. A hosted copy that silently picked up a different Streamlit
+# than the one the UI was built on is a class of bug nobody can reproduce
+# locally.
+
+streamlit==1.64.0
+pydantic==2.13.5
+httpx==0.28.1
+python-dotenv==1.2.3
+tzdata==2026.4
+
+# Not installed: beautifulsoup4. It exists only for the optional
+# approved-website adapter, which stays disabled, and a hosted demonstration has
+# no source it is permitted to fetch.

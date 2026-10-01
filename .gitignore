@@ -1,0 +1,28 @@
+# Local state - never committed
+data/
+exports/
+.venv/
+.env
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local tooling
+.claude/launch.json
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,13 @@
+{
+  "_comment": "Synthetic approximation of an ARES economic-subject response. Field names must be confirmed against the current published specification before live use.",
+  "ico": "10000001",
+  "obchodniJmeno": "Demo Prestige Dealer A s.r.o.",
+  "pravniForma": "112",
+  "datumVzniku": "2014-03-11",
+  "sidlo": {
+    "textovaAdresa": "Example Street 1, 110 00 Praha 1",
+    "nazevObce": "Praha",
+    "kodStatu": "CZ"
+  },
+  "czNace": ["45110", "45200"]
+}
