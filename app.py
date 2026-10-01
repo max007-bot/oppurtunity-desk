@@ -1,3 +1,5 @@
+from desk import cli
+cli.init_db()
 """Opportunity Desk - cars worth a second look, and the buyers who asked for them.
 
 Run it locally with:
